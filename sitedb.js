@@ -7,6 +7,7 @@ var mysql = require('mysql');
 /* ---------------------------------------------------------Global vars--------------------------------------------------------- */
 let ltac = 'N/A';
 let sql_siteid = 'N/A';
+let queryResults = [];
 let port = 8080;
 const db_con = mysql.createConnection({
   host: 'bscserver',
@@ -35,10 +36,10 @@ db_con.connect(function(err) {
             if (err) {
               throw err;
             };
-            sql_siteid = results[0]['enbname']
-            ltac = results[0]['tac']
-            console.log(sql_siteid);
-            console.log(ltac);
+            // Need to parse the query results as a list on querResults variable
+            for (let i = 0; i < results.length; i++){
+                queryResults.push(results[i]);
+            };
         });
       };
       /* End databse connection */
@@ -56,8 +57,10 @@ db_con.connect(function(err) {
             response.writeHead(200, {'Content-Type': 'text/html'});
             response.write(data);
             response.write('<section style="background-color: black; color: white;">');
-            response.write('<p>eNodeB Name: ' + sql_siteid + '</p>');
-            response.write('<p>TAC: ' + ltac + '</p>');
+            for (let i = 0; i < queryResults.length; i++){
+                response.write('<p>Cell Name: ' + queryResults[i]['cellname'] + '</p>');
+                response.write('<p>PCI: ' + queryResults[i]['pci'] + '</p>');
+            };
             response.write('</section>');
             response.end();
         };
