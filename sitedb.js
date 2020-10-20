@@ -27,12 +27,12 @@ const db_con = mysql.createConnection({
     db_con.connect(function(err) {
       if (err) {
         throw err;
-      }
+      };
       console.log('Connected to DB!');
       db_con.query("select * from ltecellpara where enbid = '" + be_siteid + "';", function(err, results, fields) {
         if (err) {
           throw err;
-        }
+        };
         sql_siteid = results[0]['enbname'].toString();
         ltac = results[0]['tac'].toString();
         console.log(sql_siteid);
@@ -57,7 +57,7 @@ const db_con = mysql.createConnection({
       response.write('<p>TAC: ' + ltac + '</p>');
       response.write('</section>');
       response.end();
-    }
+    };
   })
 });
 
