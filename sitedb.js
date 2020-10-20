@@ -29,7 +29,7 @@ db_con.connect(function(err) {
     var route = url.parse(request.url, true);
     /* Build filepath based on the URL */
     var filepath = "." + route.pathname;
-    var siteID = route.query['fe_siteid'];
+    var siteID = route.query['siteID'];
     if (typeof siteID == 'string') {
         db_con.query("select * from ltecellpara where enbid = '" + siteID + "';", function(err, results, fields) {
             if (err) {
@@ -41,8 +41,6 @@ db_con.connect(function(err) {
             };
         });
       };
-      /* End databse connection */
-      //db_con.end();
     /* Check if the URL came on root dir, and convert filepath to main.html file */
     if (filepath == "./") {
       filepath = "./main.html"

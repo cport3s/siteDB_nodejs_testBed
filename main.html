@@ -4,10 +4,19 @@
     <link rel="stylesheet" href="./main.css">
 </head>
 <body>
-    <header>
-        <form action="./main.html" method="GET">
-            <input name="fe_siteid" placeholder=" Ex.: 086" required type="number" minlength="1" maxlength="4" style="width: 60%;">
-            <input type="submit" value="Search Site">
-        </form>
+    <header id="headerContainer">
+        <section id="headerFlexContainer">
+            <div class="headerItem" id="headerSearchBar">
+                <form action="./main.html" method="GET">
+                    <input name="siteID" placeholder=" Ex.: 086" required type="number" minlength="1" maxlength="4" style="width: 60%;">
+                    <input type="submit" value="Search Site">
+                </form>
+            </div>
+            <div class="headerItem" id="headerDashboardButton">
+                <form action="./dashboard.html">
+                    <input type="submit" value="Dashboard">
+                </form>
+            </div>
+        </section>
     </header>
 </body>
