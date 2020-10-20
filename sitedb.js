@@ -5,8 +5,6 @@ var url = require('url');
 var mysql = require('mysql');
 
 /* ---------------------------------------------------------Global vars--------------------------------------------------------- */
-let ltac = 'N/A';
-let sql_siteid = 'N/A';
 let queryResults = [];
 let port = 8080;
 const db_con = mysql.createConnection({
@@ -22,6 +20,7 @@ db_con.connect(function(err) {
     if (err) {
       throw err;
     };
+    console.log('Started web server on port ' + port)
     console.log('Connected to DB!');
 });
 
@@ -56,10 +55,14 @@ db_con.connect(function(err) {
         } else {
             response.writeHead(200, {'Content-Type': 'text/html'});
             response.write(data);
-            response.write('<section style="background-color: black; color: white;">');
-            for (let i = 0; i < queryResults.length; i++){
-                response.write('<p>Cell Name: ' + queryResults[i]['cellname'] + '</p>');
-                response.write('<p>PCI: ' + queryResults[i]['pci'] + '</p>');
+            response.write('<section class="flexContainer">');
+            response.write('<div class="flexItem">Cell Name</div>');
+            response.write('<div class="flexItem">PCI</div>');
+            response.write('<div class="flexItem">PRACH</div>');
+            for (let i = 0; i < queryResults.length; i++) {
+                response.write('<div class="flexItem">' + queryResults[i]['cellname'] + '</div>');
+                response.write('<div class="flexItem">' + queryResults[i]['pci'] + '</div>');
+                response.write('<div class="flexItem">' + queryResults[i]['prach'] + '</div>');
             };
             response.write('</section>');
             response.end();
