@@ -5,15 +5,16 @@
 </head>
 <body>
     <header id="headerContainer">
-        <section id="headerFlexContainer">
+        <section class="flexContainer" id="headerFlexContainer">
             <div class="headerItem" id="headerSearchBar">
                 <form action="./main.html" method="GET">
-                    <input name="siteID" placeholder=" Ex.: 086" required type="number" minlength="1" maxlength="4" style="width: 60%;">
-                    <input type="submit" value="Search Site">
+                    <input id="searchBar" name="siteID" placeholder=" Ex.: 086" required type="number" minlength="1" maxlength="4">
+                    <button id="searchButton" type="submit"><img src="./static/icons/search_icon_512_512.jpg" alt=""></button>
+                    <!--<input id="searchButton" type="submit" value="Search Site">-->
                 </form>
             </div>
             <div class="headerItem" id="headerDashboardButton">
-                <form action="./dashboard.html">
+                <form action="./dashboard.html" method="GET">
                     <input type="submit" value="Dashboard">
                 </form>
             </div>

@@ -1,16 +1,51 @@
+body {
+    background-color: black;
+    color: white;
+}
+
 /* Header Element Selectors */
 header {
     position: static;
     z-index: 2;
     overflow: hidden;
+    height: 50px;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
 }
 
 header section{
     display: flex;
     flex-wrap: nowrap;
-    background-color: black;
-    color: white;
     width: 100%;
+    justify-content: space-between;
+    align-content: space-around;
+}
+
+.headerItem {
+    align-self: center;
+}
+
+#searchButton {
+    height: 20px;
+    width: 20px;
+    /*width: 9%;
+    color: white;
+    background-color: black;
+    border: 0px solid black;*/
+}
+
+#searchBar {
+    width: 90%;
+}
+
+#headerSearchBar {
+    flex-grow: 1;
+}
+
+#headerDashboardButton {
+    flex-grow: 0;
 }
 
 .flexContainer {
