@@ -27,8 +27,11 @@ header section{
     align-self: center;
 }
 
+.headerItem form {
+    margin-bottom: 0px;
+}
+
 #searchButton {
-    top: 5px;
     background-color: black;
     border: 0px solid black;
 }
