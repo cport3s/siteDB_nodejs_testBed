@@ -3,6 +3,7 @@ const http = require('http');
 var filesystem = require('fs');
 var url = require('url');
 var mysql = require('mysql');
+var plotly = require('plotly')("caportes", "b2KoPnm59Hop40wJA06D")
 
 /* ---------------------------------------------------------Global vars--------------------------------------------------------- */
 let lteQueryResults = [];
