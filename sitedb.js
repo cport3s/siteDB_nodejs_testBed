@@ -3,7 +3,7 @@ const http = require('http');
 var filesystem = require('fs');
 var url = require('url');
 var mysql = require('mysql');
-var plotly = require('plotly')("caportes", "b2KoPnm59Hop40wJA06D")
+var socket = require('socket.io');
 
 /* ---------------------------------------------------------Global vars--------------------------------------------------------- */
 let lteQueryResults = [];
@@ -27,7 +27,7 @@ db_con.connect(function(err) {
     console.log('Connected to DB!');
 });
 
- const server = http.createServer(function(request, response) {
+const server = http.createServer(function(request, response) {
     /* Parse URL */
     var route = url.parse(request.url, true);
     /* Build filepath based on the URL */
@@ -116,6 +116,16 @@ db_con.connect(function(err) {
             response.end();
         };
     });
+});
+
+const io = socket(server);
+
+io.on('connect', function(socket) {
+    console.log('Socket accessed!');
+    //socket.emit('news', { hello: 'world' });
+    //socket.on('my other event', function (data) {
+    //    console.log(data);
+    //});
 });
 
 server.listen(port);
